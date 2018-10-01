@@ -1,0 +1,67 @@
+{
+  "name": "react-keyrune",
+  "version": "1.0.0",
+  "description": "A simple React component wrapper around Keyrune",
+  "main": "dist/react-keyrune.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development",
+    "build": "npm-run-all --silent transpile transpile:match size",
+    "release": "yarn build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "files": [
+    "src",
+    "dist",
+    "match.js",
+    "match.d.ts",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "react",
+    "keyrune",
+    "magic the gathering"
+  ],
+  "author": "Drake Costa <drake@saeris.io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saeris/react-keyrune.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saeris/react-keyrune/issues"
+  },
+  "homepage": "https://github.com/saeris/react-keyrune",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "classnames": "2.2.6",
+    "keyrune": "3.2.5"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "emotion": "^9.2.12",
+    "eslint": "^5.0.0",
+    "eslint-plugin-react": "^6.0.0",
+    "focus-trap-react": "^4.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.9.3",
+    "npm-run-all": "^3.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-emotion": "^9.2.12",
+    "resolve-url-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}

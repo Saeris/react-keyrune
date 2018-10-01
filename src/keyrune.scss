@@ -1,0 +1,23 @@
+@import "~keyrune/sass/_variables.scss";
+
+
+@function first($list) {
+  @return nth($list, 1);
+}
+
+@each $set in $mtg_setlist {
+  :export {
+    #{nth($set, 2)}: "#{nth($set, 1))}";
+  }
+}
+
+$rarities: ();
+
+@each $rarity in $keyrune_palette {
+  $rarities: append($rarities, first($rarity));
+}
+
+:export {
+  sizes: map-keys($keyrune_sizes);
+  rarities: $rarities;
+}
