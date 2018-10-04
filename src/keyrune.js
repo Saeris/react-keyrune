@@ -5,7 +5,7 @@ import keyrune from "./keyrune.scss"
 
 const { rarities: rawRarities, sizes: rawSizes, ...setlist } = keyrune
 
-export const sizes = rawSizes.replace(/[",]+/g, ``).split(` `)
+export const sizes = rawSizes.replace(/["',]+/g, ``).split(` `)
 
 export const sets = Object.entries(setlist).reduce((hash, [key, value]) => {
   hash[key] = value.replace(/"+/g, ``)
