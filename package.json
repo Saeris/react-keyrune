@@ -2,20 +2,6 @@
   "name": "react-keyrune",
   "version": "1.0.0",
   "description": "A simple React component wrapper around Keyrune",
-  "main": "dist/react-keyrune.js",
-  "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "npm-run-all --silent transpile transpile:match size",
-    "release": "yarn build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
-  },
-  "browserslist": "> 0.25%, not dead",
-  "files": [
-    "src",
-    "dist",
-    "match.js",
-    "match.d.ts",
-    "index.d.ts"
-  ],
   "keywords": [
     "react",
     "keyrune",
@@ -31,37 +17,58 @@
     "url": "https://github.com/saeris/react-keyrune/issues"
   },
   "homepage": "https://github.com/saeris/react-keyrune",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "es",
+    "lib",
+    "src/*",
+    "*.json",
+    "*.js",
+    "*.mjs",
+    "*.map"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component",
+    "lint": "eslint ./src",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "start": "nwb serve-react-demo",
+    "test": "yarn lint && jest",
+    "test:watch": "jest --watch",
+    "coverage": "jest && codecov",
+    "precommit": "lint-staged",
+    "prepublish": "snyk protect",
+    "prepublishOnly": "yarn test && yarn build --no-demo",
+    "release": "yarn publish --access public"
+  },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "classnames": "2.2.6",
-    "keyrune": "3.2.5"
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "16.x",
+    "keyrune": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "css-loader": "^1.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "emotion": "^9.2.12",
-    "eslint": "^5.0.0",
-    "eslint-plugin-react": "^6.0.0",
+    "favicons-webpack-plugin": "^0.0.9",
     "focus-trap-react": "^4.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.9.3",
-    "npm-run-all": "^3.0.0",
+    "jest": "^23.6.0",
+    "keyrune": "^3.3.0",
+    "nwb": "0.23.x",
+    "nwb-sass": "^0.9.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-emotion": "^9.2.12",
-    "resolve-url-loader": "^3.0.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.0",
-    "url-loader": "^1.1.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
-  }
+    "react-testing-library": "^5.1.1"
+  },
+  "babel": {
+    "presets": ["env", "react"]
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "snyk": true
 }

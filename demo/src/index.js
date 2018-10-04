@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { Keyrune, sets, rarities, sizes } from '../src'
+import { Keyrune, sets, rarities, sizes } from '../../src'
 import { State } from "./state"
 import { Modal } from "./modal"
 import { Radio } from "./radio"
@@ -14,20 +14,25 @@ import {
   Section,
   Controls,
   Search,
+  GroupTitle,
+  Group,
   Setlist,
   SetlistItem,
   IconWrapper,
   Icon,
+  IconDetails,
   IconName,
   IconCode,
   Preview,
   Row,
-  Checkbox,
+  Toggleables,
+  Toggle,
+  LoyaltyButton,
   RadioInput,
   CloseButton,
   Footer
 } from "./elements"
-import "./public/fonts/index.scss"
+import "../public/fonts/index.scss"
 
 const App = () => (
   <State initial={{
@@ -55,7 +60,7 @@ const App = () => (
             </Title>
           </Header>
           <Package>
-            <Code>yarn add @saeris/react-keyrune</Code>
+            <Code>{`yarn add @saeris/react-keyrune keyrune`}</Code>
             <Code>{`import { keyrune } from "@saeris/react-keyrune"`}</Code>
           </Package>
 
@@ -65,7 +70,7 @@ const App = () => (
             return (
               <Section>
                 <Controls>
-                  <Subtitle>Icons:</Subtitle>
+                  <Subtitle>Set Icons:</Subtitle>
                   <Search type="text" placeholder="Search Icons..." value={state.filter} onChange={e => {
                     e.preventDefault()
                     update({
@@ -73,18 +78,20 @@ const App = () => (
                     })
                   }}/>
                 </Controls>
-                  <Setlist>
-                    {Object.entries(sets)
-                      .filter(([code, name]) => state.filter ? `${name} ${code}`.toLowerCase().includes(state.filter.toLowerCase()) : true)
-                      .map(([code, name]) => (
+                <Setlist>
+                  {Object.entries(sets)
+                    .filter(([code, name]) => state.filter ? `${name} ${code}`.toLowerCase().includes(state.filter.toLowerCase()) : true)
+                    .map(([code, name]) => (
                       <SetlistItem key={code}>
                         <ToggleModal id={code} onClick={e => { update(({ modal }) => ({ modal: { ...modal, activeIcon: code } })) }}>
                           <IconWrapper>
                             <Icon>
                               <Keyrune fixed set={code} size="4x" />
                             </Icon>
-                            <IconName>{name}</IconName>
-                            <IconCode>({code})</IconCode>
+                            <IconDetails>
+                              <IconName>{name}</IconName>
+                              <IconCode>({code})</IconCode>
+                            </IconDetails>
                           </IconWrapper>
                         </ToggleModal>
                       </SetlistItem>
@@ -97,13 +104,15 @@ const App = () => (
                           <span>{sets[activeIcon]}</span>
                           <span>{`(${activeIcon})`}</span>
                         </h3>
-                        <Preview
-                          fixed
-                          set={activeIcon}
-                          foil={foil}
-                          gradient={gradient}
-                          rarity={rarity.toLowerCase()}
-                        />
+                        <Row>
+                          <Preview
+                            fixed
+                            set={activeIcon}
+                            foil={foil}
+                            gradient={gradient}
+                            rarity={rarity.toLowerCase()}
+                          />
+                        </Row>
                         <Row>
                           <strong>JSX:</strong>
                           <code>
@@ -124,21 +133,17 @@ const App = () => (
                             <RadioInput key={value} value={`${value[0].toUpperCase()}${value.slice(1)}`} />
                           ))}
                         </Radio>
-                        <Row>
-                          <Checkbox checked={gradient} onChange={e => { update(({ modal }) => ({ modal: { ...modal, gradient: !gradient } })) }}>
+                        <Toggleables>
+                          <Toggle checked={gradient} onChange={e => { update(({ modal }) => ({ modal: { ...modal, gradient: !gradient } })) }}>
                             Gradient
-                          </Checkbox>
-                        </Row>
-                        <Row>
-                          <Checkbox checked={foil} onChange={e => { update(({ modal }) => ({ modal: { ...modal, foil: !foil } })) }}>
+                          </Toggle>
+                          <Toggle checked={foil} onChange={e => { update(({ modal }) => ({ modal: { ...modal, foil: !foil } })) }}>
                             Foil
-                          </Checkbox>
-                        </Row>
-                        <Row>
-                          <Checkbox checked={fixed} onChange={e => { update(({ modal }) => ({ modal: { ...modal, fixed: !fixed } })) }}>
-                            Fixed Width
-                          </Checkbox>
-                        </Row>
+                          </Toggle>
+                          <Toggle checked={fixed} onChange={e => { update(({ modal }) => ({ modal: { ...modal, fixed: !fixed } })) }}>
+                            Fixed
+                          </Toggle>
+                        </Toggleables>
                         <Close onClick={reset}>
                           <Keyrune title="Close Modal" fixed set="10e" />
                         </Close>
@@ -157,10 +162,9 @@ const App = () => (
                 </a>
               </span>
               <span>
-                {`Coded with `}
-                <Keyrune title="" fixed set="pheart" />
+                {`Coded with 💙 by `}
                 <a href="https://www.github.com/saeris" title="Drake Costa (@Saeris) on GitHub" target="_blank" rel="noopener">
-                  {` by Drake Costa`}
+                  Drake Costa
                 </a>
               </span>
             </div>

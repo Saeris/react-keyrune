@@ -2,7 +2,6 @@ import React from "react"
 import classnames from "classnames"
 import "keyrune/sass/keyrune.scss"
 import keyrune from "./keyrune.scss"
-import variables from "keyrune/sass/_variables.scss"
 
 const { rarities: rawRarities, sizes: rawSizes, ...setlist } = keyrune
 
@@ -34,7 +33,7 @@ export const Keyrune = ({
     title={sets[set]}
     alt={sets[set]}
     className={classnames(className, {
-      ss: true,
+      "ss": true,
       [`ss-${set}`]: Object.keys(sets).includes(set),
       [`ss-${size}`]: sizes.includes(size),
       "ss-fw": fixed,
