@@ -18,6 +18,5 @@ $rarities: ();
 }
 
 :export {
-  sizes: map-keys($keyrune_sizes);
   rarities: $rarities;
 }

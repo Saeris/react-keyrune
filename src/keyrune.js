@@ -3,9 +3,9 @@ import classnames from "classnames"
 import "keyrune/sass/keyrune.scss"
 import keyrune from "./keyrune.scss"
 
-const { rarities: rawRarities, sizes: rawSizes, ...setlist } = keyrune
+const { rarities: rawRarities, ...setlist } = keyrune
 
-export const sizes = rawSizes.replace(/["',]+/g, ``).split(` `)
+export const sizes = [`2x`, `3x`, `4x`, `5x`, `6x`]
 
 export const sets = Object.entries(setlist).reduce((hash, [key, value]) => {
   hash[key] = value.replace(/"+/g, ``)
