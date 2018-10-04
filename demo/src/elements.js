@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "react-emotion"
 import FocusTrap from "focus-trap-react"
-import { Keyrune } from "../../src"
+import { Keyrune } from "@saeris/react-keyrune"
 
 const colors = {
   bg: `#f5f5f4`,
@@ -34,7 +34,7 @@ const colors = {
   radio: {
     active: `#e8ebef`,
     main: `#008eae`,
-    hover: `#166075`,
+    hover: `#166075`
   }
 }
 
@@ -555,7 +555,7 @@ const ToggleIcon = styled(`span`)`
       content: "";
       position: absolute;
       top: 0.11rem;
-      ${checked ? `right`: `left`}: 0.1rem;
+      ${checked ? `right` : `left`}: 0.1rem;
       display: block;
       width: 2.2rem;
       height: 2.2rem;
@@ -590,7 +590,7 @@ export const Toggle = ({ checked = false, children, ...props }) => (
   <ToggleWrapper>
     <span>
       <ToggleIcon checked={checked}>
-        <input type="checkbox" checked={checked} {...props}/>
+        <input type="checkbox" checked={checked} {...props} />
       </ToggleIcon>
       {children}
     </span>

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-import { Keyrune, sets, rarities, sizes } from '../../src'
+import React, { Component } from "react"
+import { render } from "react-dom"
+import { Keyrune, sets, rarities, sizes } from "@saeris/react-keyrune"
 import { State } from "./state"
 import { Modal } from "./modal"
 import { Radio } from "./radio"
@@ -35,17 +35,18 @@ import {
 import "../public/fonts/index.scss"
 
 const App = () => (
-  <State initial={{
-    filter: ``,
-    modal: {
-      activeIcon: null,
-      size: `Normal`,
-      rarity: `None`,
-      fixed: false,
-      gradient: false,
-      foil: false
-    }
-  }}
+  <State
+    initial={{
+      filter: ``,
+      modal: {
+        activeIcon: null,
+        size: `Normal`,
+        rarity: `None`,
+        fixed: false,
+        gradient: false,
+        foil: false
+      }
+    }}
   >
     {({ state, update, reset }) => {
       const { activeIcon, rarity, size, fixed, gradient, foil } = state.modal
@@ -53,9 +54,14 @@ const App = () => (
         <Main>
           <Header>
             <Title>
-              <a href="https://www.github.com/saeris/react-keyrune" title="React Keyrune on GitHub" target="_blank" rel="noopener">
-              <Keyrune fixed set="leg" />
-              React Keyrune
+              <a
+                href="https://www.github.com/saeris/react-keyrune"
+                title="React Keyrune on GitHub"
+                target="_blank"
+                rel="noopener"
+              >
+                <Keyrune fixed set="leg" />
+                React Keyrune
               </a>
             </Title>
           </Header>
@@ -65,37 +71,62 @@ const App = () => (
           </Package>
 
           <Modal>
-          {({ isOpen, handleToggle, ToggleModal, ModalOverlay, ModalContent }) => {
-            const Close = CloseButton(ToggleModal)
-            return (
-              <Section>
-                <Controls>
-                  <Subtitle>Set Icons:</Subtitle>
-                  <Search type="text" placeholder="Search Icons..." value={state.filter} onChange={e => {
-                    e.preventDefault()
-                    update({
-                      filter: e.target.value
-                    })
-                  }}/>
-                </Controls>
-                <Setlist>
-                  {Object.entries(sets)
-                    .filter(([code, name]) => state.filter ? `${name} ${code}`.toLowerCase().includes(state.filter.toLowerCase()) : true)
-                    .map(([code, name]) => (
-                      <SetlistItem key={code}>
-                        <ToggleModal id={code} onClick={e => { update(({ modal }) => ({ modal: { ...modal, activeIcon: code } })) }}>
-                          <IconWrapper>
-                            <Icon>
-                              <Keyrune fixed set={code} size="4x" />
-                            </Icon>
-                            <IconDetails>
-                              <IconName>{name}</IconName>
-                              <IconCode>({code})</IconCode>
-                            </IconDetails>
-                          </IconWrapper>
-                        </ToggleModal>
-                      </SetlistItem>
-                    ))}
+            {({
+              isOpen,
+              handleToggle,
+              ToggleModal,
+              ModalOverlay,
+              ModalContent
+            }) => {
+              const Close = CloseButton(ToggleModal)
+              return (
+                <Section>
+                  <Controls>
+                    <Subtitle>Set Icons:</Subtitle>
+                    <Search
+                      type="text"
+                      placeholder="Search Icons..."
+                      value={state.filter}
+                      onChange={e => {
+                        e.preventDefault()
+                        update({
+                          filter: e.target.value
+                        })
+                      }}
+                    />
+                  </Controls>
+                  <Setlist>
+                    {Object.entries(sets)
+                      .filter(
+                        ([code, name]) =>
+                          state.filter
+                            ? `${name} ${code}`
+                                .toLowerCase()
+                                .includes(state.filter.toLowerCase())
+                            : true
+                      )
+                      .map(([code, name]) => (
+                        <SetlistItem key={code}>
+                          <ToggleModal
+                            id={code}
+                            onClick={e => {
+                              update(({ modal }) => ({
+                                modal: { ...modal, activeIcon: code }
+                              }))
+                            }}
+                          >
+                            <IconWrapper>
+                              <Icon>
+                                <Keyrune fixed set={code} size="4x" />
+                              </Icon>
+                              <IconDetails>
+                                <IconName>{name}</IconName>
+                                <IconCode>({code})</IconCode>
+                              </IconDetails>
+                            </IconWrapper>
+                          </ToggleModal>
+                        </SetlistItem>
+                      ))}
                   </Setlist>
                   <ModalOverlay>
                     {isOpen ? (
@@ -116,31 +147,77 @@ const App = () => (
                         <Row>
                           <strong>JSX:</strong>
                           <code>
-                            {`<Keyrune set="${activeIcon}" ${rarity !== `None` ? `rarity="${rarity.toLowerCase()}" ` : ``}${size !== `Normal` ? `size="${size}" ` : ``}${fixed ? `fixed ` : ``}${gradient ? `gradient `: ``}${foil ? `foil `: ``}/>`}
+                            {`<Keyrune set="${activeIcon}" ${
+                              rarity !== `None`
+                                ? `rarity="${rarity.toLowerCase()}" `
+                                : ``
+                            }${size !== `Normal` ? `size="${size}" ` : ``}${
+                              fixed ? `fixed ` : ``
+                            }${gradient ? `gradient ` : ``}${
+                              foil ? `foil ` : ``
+                            }/>`}
                           </code>
                         </Row>
-                        <Radio name="size" selected={size} onChange={({ selected }) => {
-                          update(({ modal }) => ({ modal: { ...modal, size: selected } }))
-                        }}>
+                        <Radio
+                          name="size"
+                          selected={size}
+                          onChange={({ selected }) => {
+                            update(({ modal }) => ({
+                              modal: { ...modal, size: selected }
+                            }))
+                          }}
+                        >
                           {[`Normal`, ...sizes].map(value => (
                             <RadioInput key={value} value={value} />
                           ))}
                         </Radio>
-                        <Radio name="rarity" selected={rarity} onChange={({ selected }) => {
-                          update(({ modal }) => ({ modal: { ...modal, rarity: selected } }))
-                        }}>
+                        <Radio
+                          name="rarity"
+                          selected={rarity}
+                          onChange={({ selected }) => {
+                            update(({ modal }) => ({
+                              modal: { ...modal, rarity: selected }
+                            }))
+                          }}
+                        >
                           {[`None`, ...rarities].map(value => (
-                            <RadioInput key={value} value={`${value[0].toUpperCase()}${value.slice(1)}`} />
+                            <RadioInput
+                              key={value}
+                              value={`${value[0].toUpperCase()}${value.slice(
+                                1
+                              )}`}
+                            />
                           ))}
                         </Radio>
                         <Toggleables>
-                          <Toggle checked={gradient} onChange={e => { update(({ modal }) => ({ modal: { ...modal, gradient: !gradient } })) }}>
+                          <Toggle
+                            checked={gradient}
+                            onChange={e => {
+                              update(({ modal }) => ({
+                                modal: { ...modal, gradient: !gradient }
+                              }))
+                            }}
+                          >
                             Gradient
                           </Toggle>
-                          <Toggle checked={foil} onChange={e => { update(({ modal }) => ({ modal: { ...modal, foil: !foil } })) }}>
+                          <Toggle
+                            checked={foil}
+                            onChange={e => {
+                              update(({ modal }) => ({
+                                modal: { ...modal, foil: !foil }
+                              }))
+                            }}
+                          >
                             Foil
                           </Toggle>
-                          <Toggle checked={fixed} onChange={e => { update(({ modal }) => ({ modal: { ...modal, fixed: !fixed } })) }}>
+                          <Toggle
+                            checked={fixed}
+                            onChange={e => {
+                              update(({ modal }) => ({
+                                modal: { ...modal, fixed: !fixed }
+                              }))
+                            }}
+                          >
                             Fixed
                           </Toggle>
                         </Toggleables>
@@ -148,30 +225,40 @@ const App = () => (
                           <Keyrune title="Close Modal" fixed set="10e" />
                         </Close>
                       </ModalContent>
-                    ) : null }
+                    ) : null}
                   </ModalOverlay>
-              </Section>
-            )
-          }}
+                </Section>
+              )
+            }}
           </Modal>
           <Footer>
             <div>
               <span>
-                <a href="https://www.github.com/saeris/react-keyrune" title="GitHub Repository" target="_blank" rel="noopener">
+                <a
+                  href="https://www.github.com/saeris/react-keyrune"
+                  title="GitHub Repository"
+                  target="_blank"
+                  rel="noopener"
+                >
                   GitHub
                 </a>
               </span>
               <span>
                 {`Coded with 💙 by `}
-                <a href="https://www.github.com/saeris" title="Drake Costa (@Saeris) on GitHub" target="_blank" rel="noopener">
+                <a
+                  href="https://www.github.com/saeris"
+                  title="Drake Costa (@Saeris) on GitHub"
+                  target="_blank"
+                  rel="noopener"
+                >
                   Drake Costa
                 </a>
               </span>
             </div>
           </Footer>
         </Main>
-    )
-  }}
+      )
+    }}
   </State>
 )
 
