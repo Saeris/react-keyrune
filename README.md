@@ -22,7 +22,7 @@
 
 ---
 
-## 🔧 Installation
+## 📦 Installation
 
 ```bash
 npm install --save graphql @saeris/react-keyrune keyrune
@@ -32,7 +32,7 @@ yarn add graphql @saeris/react-keyrune keyrune
 
 > Note: [Keyrune](https://github.com/andrewgioia/Keyrune) is a required peer-dependency. This component will not work without it!
 
-## 📦 Usage
+## 🔧 Usage
 
 To use this component, simply import it and pass in some props:
 
@@ -78,4 +78,4 @@ All card symbol images are copyright [Wizards of the Coast](http://magicthegathe
 
 Keyrune is licensed under the the [SIL OFL 1.1 license](http://scripts.sil.org/OFL).
 
-Released under the [MIT license](https://github.com/Saeris/graphql-scalars/blob/master/LICENSE.md).
+Released under the [MIT license](https://github.com/Saeris/react-keyrune/blob/master/LICENSE.md).
