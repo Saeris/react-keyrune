@@ -13,7 +13,7 @@ export class State extends Component {
       state =>
         stateReducer(
           prev,
-          typeof valOrFn === "function" ? valOrFn(state) : valOrFn
+          typeof valOrFn === `function` ? valOrFn(state) : valOrFn
         ),
       () => onChange(this.state, prev)
     )

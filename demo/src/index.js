@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import { render } from "react-dom"
 import { Keyrune, sets, rarities, sizes } from "@saeris/react-keyrune"
 import { State } from "./state"
@@ -14,8 +14,6 @@ import {
   Section,
   Controls,
   Search,
-  GroupTitle,
-  Group,
   Setlist,
   SetlistItem,
   IconWrapper,
@@ -25,11 +23,11 @@ import {
   IconCode,
   Preview,
   Row,
+  PrewviewContainer,
   Toggleables,
   Toggle,
-  LoyaltyButton,
   RadioInput,
-  CloseButton,
+  closeButton,
   Footer
 } from "./elements"
 import "../public/fonts/index.scss"
@@ -53,17 +51,19 @@ const App = () => (
       return (
         <Main>
           <Header>
-            <Title>
-              <a
-                href="https://www.github.com/saeris/react-keyrune"
-                title="React Keyrune on GitHub"
-                target="_blank"
-                rel="noopener"
-              >
-                <Keyrune fixed set="leg" />
-                React Keyrune
-              </a>
-            </Title>
+            <div>
+              <Title>
+                <a
+                  href="https://www.github.com/saeris/react-keyrune"
+                  title="React Keyrune on GitHub"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Keyrune fixed set="leg" />
+                  React Keyrune
+                </a>
+              </Title>
+            </div>
           </Header>
           <Package>
             <Code>{`yarn add @saeris/react-keyrune keyrune`}</Code>
@@ -78,7 +78,7 @@ const App = () => (
               ModalOverlay,
               ModalContent
             }) => {
-              const Close = CloseButton(ToggleModal)
+              const Close = closeButton(ToggleModal)
               return (
                 <Section>
                   <Controls>
@@ -99,11 +99,11 @@ const App = () => (
                     {Object.entries(sets)
                       .filter(
                         ([code, name]) =>
-                          state.filter
+                          (state.filter
                             ? `${name} ${code}`
-                                .toLowerCase()
-                                .includes(state.filter.toLowerCase())
-                            : true
+                              .toLowerCase()
+                              .includes(state.filter.toLowerCase())
+                            : true)
                       )
                       .map(([code, name]) => (
                         <SetlistItem key={code}>
@@ -135,7 +135,7 @@ const App = () => (
                           <span>{sets[activeIcon]}</span>
                           <span>{`(${activeIcon})`}</span>
                         </h3>
-                        <Row>
+                        <PrewviewContainer>
                           <Preview
                             fixed
                             set={activeIcon}
@@ -143,15 +143,15 @@ const App = () => (
                             gradient={gradient}
                             rarity={rarity.toLowerCase()}
                           />
-                        </Row>
+                        </PrewviewContainer>
                         <Row>
                           <strong>JSX:</strong>
                           <code>
                             {`<Keyrune set="${activeIcon}" ${
-                              rarity !== `None`
-                                ? `rarity="${rarity.toLowerCase()}" `
-                                : ``
-                            }${size !== `Normal` ? `size="${size}" ` : ``}${
+                              rarity === `None`
+                                ? ``
+                                : `rarity="${rarity.toLowerCase()}" `
+                            }${size === `Normal` ? `` : `size="${size}" `}${
                               fixed ? `fixed ` : ``
                             }${gradient ? `gradient ` : ``}${
                               foil ? `foil ` : ``
@@ -262,4 +262,4 @@ const App = () => (
   </State>
 )
 
-render(<App />, document.getElementById("root"))
+render(<App />, document.getElementById(`root`))

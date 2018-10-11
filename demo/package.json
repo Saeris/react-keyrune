@@ -25,7 +25,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@saeris/react-keyrune": "1.0.7",
+    "@saeris/react-keyrune": "latest",
     "emotion": "^9.2.12",
     "focus-trap-react": "^4.0.1",
     "keyrune": "^3.3.0",

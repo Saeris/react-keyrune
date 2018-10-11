@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { createPortal } from 'react-dom'
 import { Content, Overlay, Button } from "./elements"
 
 export class Modal extends Component {
@@ -16,7 +15,7 @@ export class Modal extends Component {
   }
 
   toggleModal = e => {
-    if(e) e.stopPropagation()
+    if (e) e.stopPropagation()
     document.body.classList.toggle(`modal`)
     const id = e.currentTarget.id
     this.setState(({ isOpen, previousFocus }) => ({
@@ -46,7 +45,7 @@ export class Modal extends Component {
 
   render() {
     const { children } = this.props
-    const { isOpen, previousFocus } = this.state
+    const { isOpen } = this.state
 
     return children({
       isOpen,
@@ -66,7 +65,7 @@ export class Modal extends Component {
         />
       ),
       ModalOverlay: props => <Overlay onClick={this.toggleModal} isOpen={isOpen} {...props} />,
-      ToggleModal: ({ onClick, ...props}) => (
+      ToggleModal: ({ onClick, ...props }) => (
         <Button type="button" onClick={e => {
           this.toggleModal(e)
           onClick(e)

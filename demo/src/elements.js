@@ -70,21 +70,29 @@ export const Header = styled(`header`)`
   width: 100%;
   padding: 2rem 5%;
   background-color: ${colors.header.bg};
+
+  > div {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 128rem;
+  }
 `
 
 export const Title = styled(`h1`)`
   label: title;
-  flex: 1 1 auto;
-  max-width: 128rem;
+  display: inline-flex;
+  flex: 0 1 auto;
+  height: 6.5rem;
   padding: 0;
   margin: 0;
   color: ${colors.header.text};
-  font-size: 3.5rem;
+  font-size: 3.4rem;
   text-shadow: 0 1px 0 ${colors.header.shadow};
   user-select: none;
 
   a {
-    display: flex;
+    display: inline-flex;
     align-items: center;;
 
     i {
@@ -179,26 +187,6 @@ export const Search = styled(`input`)`
     color: rgba(128, 128, 128, 0.5);
     font-style: italic;
   }
-`
-
-export const GroupTitle = styled(`h4`)`
-  label: group-title;
-  padding: 0;
-  margin: 0;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  color: #61605B;
-  font-size: 2.4rem;
-  user-select: none;
-`
-
-export const Group = styled(`div`)`
-  label: group;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 128rem;
-  margin-bottom: 2rem;
 `
 
 export const Setlist = styled(`ul`)`
@@ -338,30 +326,6 @@ export const Content = styled(FocusTrap)`
   }
 `
 
-export const Preview = styled(Keyrune)`
-  label: preview;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  width: 32.5rem;
-  height: 32.5rem;
-  font-size: 25rem;
-  &.ss.ss-grad {
-    -webkit-text-stroke-width: 0.15rem;
-  }
-
-  @media screen and (max-width: 415px) {
-    width: 13rem;
-    height: 13rem;
-    font-size: 10rem;
-
-    &.ss.ss-grad {
-      -webkit-text-stroke-width: 0.05rem;
-    }
-  }
-`
-
 export const Row = styled(`div`)`
   display: flex;
   flex-direction: column;
@@ -409,6 +373,31 @@ export const Row = styled(`div`)`
     align-items: flex-start;
     margin-bottom: 2rem;
     font-size: 1.4rem;
+  }
+`
+
+export const PrewviewContainer = styled(Row)`
+  label: preview-container;
+  height: 32.5rem;
+`
+
+export const Preview = styled(Keyrune)`
+  label: preview;
+  align-self: center;
+  width: 32.5rem;
+  font-size: 25rem;
+  &.ss.ss-grad {
+    -webkit-text-stroke-width: 0.15rem;
+  }
+
+  @media screen and (max-width: 415px) {
+    width: 13rem;
+    height: 13rem;
+    font-size: 10rem;
+
+    &.ss.ss-grad {
+      -webkit-text-stroke-width: 0.05rem;
+    }
   }
 `
 
@@ -624,41 +613,7 @@ export const Button = styled(`button`)`
   }
 `
 
-const Loyalty = styled(Button)`
-  label: loyalty-button;
-  font-size: 1.8rem;
-  line-height: 4rem;
-  user-select: none;
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: default;
-  }
-
-  &:hover:not(:disabled) span i:before {
-    color: #333;
-    text-shadow:
-      -2px 0 ${colors.search.focus},
-      0 2px ${colors.search.focus},
-      2px 0 ${colors.search.focus},
-      0 -2px ${colors.search.focus};
-  }
-
-  span {
-    i {
-      margin-left: 0.2rem;
-      margin-right: 1.8rem;
-    }
-  }
-`
-
-export const LoyaltyButton = ({ children, ...props }) => (
-  <Loyalty type="button" {...props}>
-    <span>{children}</span>
-  </Loyalty>
-)
-
-export const CloseButton = component => styled(component)`
+export const closeButton = component => styled(component)`
   label: modal-close-button;
   position: absolute;
   top: 0;
