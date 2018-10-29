@@ -25,9 +25,9 @@
 ## 📦 Installation
 
 ```bash
-npm install --save graphql @saeris/react-keyrune keyrune
+npm install --save @saeris/react-keyrune keyrune
 # or
-yarn add graphql @saeris/react-keyrune keyrune
+yarn add @saeris/react-keyrune keyrune
 ```
 
 > Note: [Keyrune](https://github.com/andrewgioia/Keyrune) is a required peer-dependency. This component will not work without it!
