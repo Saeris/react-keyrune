@@ -61,7 +61,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^22.16.0",
     "eslint-plugin-react": "^7.11.1",
-    "favicons-webpack-plugin": "^0.0.9",
+    "favicons-webpack-plugin": "^1.0.0",
     "focus-trap-react": "^4.0.1",
     "jest": "^23.6.0",
     "keyrune": "^3.3.0",
