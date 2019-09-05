@@ -5,7 +5,7 @@
   @return nth($list, 1);
 }
 
-@each $set in $mtg_setlist {
+@each $set in $keyrune_sets {
   :export {
     #{nth($set, 2)}: "#{nth($set, 1))}";
   }
