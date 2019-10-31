@@ -28,7 +28,7 @@
     "@saeris/react-keyrune": "latest",
     "emotion": "^10.0.0",
     "focus-trap-react": "^4.0.1",
-    "keyrune": "^3.3.0",
+    "keyrune": "^3.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-emotion": "^9.2.12"
