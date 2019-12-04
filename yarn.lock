@@ -6414,10 +6414,10 @@ kew@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/kew/-/kew-0.7.0.tgz#79d93d2d33363d6fdd2970b335d9141ad591d79b"
 
-keyrune@^3.3.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/keyrune/-/keyrune-3.5.0.tgz#393a1a3d5873f644b8d5bfa03cf27f45b8b030f2"
-  integrity sha512-qJhO/9mdcYbS+pVZL0l+nUUyUKBIwnXXJQwH1PDdrYQ4ugfd0AWzZy+KY7teNNjSE19E3HpSDZuyP6uLH4BlUA==
+keyrune@^3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/keyrune/-/keyrune-3.6.3.tgz#f066038c1ed99c746e4f1b3ba540e4df1958395d"
+  integrity sha512-SJpW8SbtKowf7Tr1p31dgekAb0iCgkW0s57LyoxssCX1twcr9kcNASL+AnBWtA4QXWSIMtJgItjoMebutGLSwg==
 
 killable@^1.0.0:
   version "1.0.1"
