@@ -46,7 +46,7 @@
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "keyrune": "^3.3.0",
+    "keyrune": "^3.6.3",
     "react": "16.x"
   },
   "devDependencies": {
