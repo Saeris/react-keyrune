@@ -47,7 +47,7 @@
   },
   "peerDependencies": {
     "keyrune": "^3.3.0",
-    "react": "16.x"
+    "react": "^16.13.0"
   },
   "devDependencies": {
     "@saeris/react-keyrune": "^1.0.8",
