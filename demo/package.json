@@ -31,7 +31,7 @@
     "keyrune": "^3.3.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-emotion": "^9.2.12"
+    "react-emotion": "^10.0.0"
   },
   "devDependencies": {}
 }
