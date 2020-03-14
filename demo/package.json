@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@saeris/react-keyrune": "latest",
-    "emotion": "^10.0.0",
+    "emotion": "^10.0.27",
     "focus-trap-react": "^4.0.1",
     "keyrune": "^3.3.0",
     "react": "^16.5.2",
